@@ -1,0 +1,50 @@
+{
+  "title": "Focus on URL-Location bar when opening new tab in Safari",
+  "rules": [
+    {
+      "description": "Remap CMD+T to (CMD+T and CMD+L) in Safari only",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "t",
+            "modifiers": {
+              "mandatory": [
+                "left_gui"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "t",
+              "modifiers": [
+                "left_gui"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com.apple.Safari"
+              ]
+            }
+          ],
+          "type": "basic",
+          "parameters": {
+            "basic.to_delayed_action_delay_milliseconds": 1000
+          },
+          "to_after_key_up": [
+            {
+              "repeat": true,
+              "key_code": "l",
+              "modifiers": [
+                "left_gui"
+              ],
+              "lazy": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
